@@ -1,20 +1,17 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
+@(Records : List[PeopleModel], Total : Int)
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Scala")
-
-}
+    <h1>New User Form</h1>
+<form action="/add" method="post">
+    <input name="name" /><br />
+    <input name="salary" /><br />
+    <input name="department" /><br />
+    <input type="submit" value="Submit">
+</form>
+<br /><br />
+<table>
+    <tr><td>Name</td><td>Salary</td><td>Department</td></tr>
+    @for(item <- Records) {
+        <tr><td>@item.name</td><td>@item.salary</td><td>@item.department</td></tr>
+    }
+    <tr><td>Total:</td><td>@Total</td><td>&nbsp;</td></tr>
+</table>
