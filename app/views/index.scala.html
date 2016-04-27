@@ -1,12 +1,25 @@
 @(Records : List[PeopleModel], Total : Int)
-
+<script src="@routes.Assets.versioned("lib/jquery/jquery.min.js")"></script>
+<div>
+    <div>
     <h1>New User Form</h1>
-<form action="/add" method="post">
-    <input name="name" /><br />
-    <input name="salary" /><br />
-    <input name="department" /><br />
-    <input type="submit" value="Submit">
-</form>
+        <form action="/add" method="post">
+            <input name="name" /><br />
+            <input name="salary" /><br />
+            <input name="department" /><br />
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <form action="/department" method="post">
+            <select name="department">
+                @for(item <- Records) {
+                    <option value="@item.department">@item.department</option>
+                }
+            </select>
+        </form>
+    </div>
+</div>
 <br /><br />
 <table>
     <tr><td>Name</td><td>Salary</td><td>Department</td></tr>
@@ -15,3 +28,6 @@
     }
     <tr><td>Total:</td><td>@Total</td><td>&nbsp;</td></tr>
 </table>
+<script>
+
+</script>

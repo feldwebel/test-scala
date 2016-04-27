@@ -13,4 +13,6 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 
+libraryDependencies += "org.webjars" % "jquery" % "1.12.3"
+
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
