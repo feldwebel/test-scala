@@ -1,5 +1,5 @@
 @(Records : List[PeopleModel], Total : Int)
-<script src="@routes.Assets.versioned("lib/jquery/jquery.min.js")"></script>
+<script src='@routes.Assets.versioned("lib/jquery/jquery.min.js")'></script>
 <div>
     <div>
     <h1>New User Form</h1>
@@ -29,5 +29,9 @@
     <tr><td>Total:</td><td>@Total</td><td>&nbsp;</td></tr>
 </table>
 <script>
+function submitDepartment(department) {
+    $.post('/department', {department: department}, function(data){
 
+    });
+}
 </script>
