@@ -5,6 +5,8 @@ import scala.collection.immutable.List
 /**
   * Created by user on 26.04.16.
   */
+case class DepartmentModel(department:String)
+
 case class PeopleModel(name: String, salary: Int, department: String)
 
 object PeopleModel {
@@ -26,7 +28,7 @@ object PeopleModel {
 
   def average() {}
 
-  def average(department: String) {}
+  def average(department: String) :  = {}
 
   //  def totalSum(department: String): Int =
   //    records.filter(r => r.department == department).map(_.salary).sum

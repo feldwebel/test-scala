@@ -5,7 +5,7 @@ import javax.inject._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import models.PeopleModel
+import models.{DepartmentModel, PeopleModel}
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -22,6 +22,12 @@ class HomeController @Inject() extends Controller {
     )(PeopleModel.apply)(PeopleModel.unapply)
   )
 
+  val DepartmentForm : Form[DepartmentModel] = Form (
+    mapping(
+      "department" -> text
+    )(DepartmentModel.apply)(DepartmentModel.unapply)
+  )
+
   def index = Action {
     Ok(views.html.index(PeopleModel.show, PeopleModel.total))
   }
@@ -30,6 +36,11 @@ class HomeController @Inject() extends Controller {
     val record = PeopleForm.bindFromRequest.get
     PeopleModel.save(record)
     Redirect(routes.HomeController.index)
+  }
+
+  def getDepartmentData = Action {
+    val department = DepartmentForm.bindFromRequest.get
+    PeopleModel.average(department)
   }
 
 }
