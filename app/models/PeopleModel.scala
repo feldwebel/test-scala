@@ -17,29 +17,24 @@ object PeopleModel {
       PeopleModel("ivanov", 1024, "sales")
     )
 
-  def save(record: PeopleModel): Unit = {
-    records = record :: records
-  }
+  def save(record: PeopleModel): Unit = records = record :: records
 
-  def show(): List[PeopleModel] = {
-    records.reverse
-  }
+  def show(): List[PeopleModel] = records.reverse
 
-  def find(name: String): Option[PeopleModel] = {
-    records.find(r => r.name == name)
-  }
+  def find(name: String): Option[PeopleModel] = records.find(r => r.name == name)
 
   def total(): Int = records.map(_.salary).sum
 
   def average() : Float = records.map(_.salary).sum / records.length
+
+  def total(department: DepartmentModel): Int =
+      records.filter(r => r.department == department.department).map(_.salary).sum
 
   def average(department: DepartmentModel) : Float = {
     val items = records.filter(r => r.department == department.department).map(_.salary)
     items.sum / items.length
   }
 
-  //  def totalSum(department: String): Int =
-  //    records.filter(r => r.department == department).map(_.salary).sum
   //
   //  def findUser(name: String): String =
   //    records.find(r => r.name == name).toString

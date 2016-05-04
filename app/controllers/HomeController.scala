@@ -5,6 +5,7 @@ import javax.inject._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import models.{DepartmentModel, PeopleModel}
 
 /**
@@ -40,7 +41,7 @@ class HomeController @Inject() extends Controller {
 
   def getDepartmentData = Action { implicit request =>
     val department = DepartmentForm.bindFromRequest.get
-    Ok(PeopleModel.average(department).toString)
+    Ok(Json.toJson(List(PeopleModel.average(department), PeopleModel.total(department))))
   }
 
 }
