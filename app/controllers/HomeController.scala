@@ -38,9 +38,9 @@ class HomeController @Inject() extends Controller {
     Redirect(routes.HomeController.index)
   }
 
-  def getDepartmentData = Action {
+  def getDepartmentData = Action { implicit request =>
     val department = DepartmentForm.bindFromRequest.get
-    PeopleModel.average(department)
+    Ok(PeopleModel.average(department).toString)
   }
 
 }

@@ -12,15 +12,17 @@
     </div>
     <div>
         <form action="/department" method="post">
-            <select name="department">
-                @for(item <- Records) {
-                    <option value="@item.department">@item.department</option>
+            <select name="department" id="deptSelect">
+                <option value="">choose department</option>
+                @for(item <- Records.map(_.department).distinct) {
+                    <option value="@item">@item</option>
                 }
             </select>
         </form>
+        <div id="deptAverage" style="display:none"></div>
     </div>
 </div>
-<br /><br />
+<br /><br /><div style="clear:both;"></div>
 <table>
     <tr><td>Name</td><td>Salary</td><td>Department</td></tr>
     @for(item <- Records) {
@@ -29,9 +31,15 @@
     <tr><td>Total:</td><td>@Total</td><td>&nbsp;</td></tr>
 </table>
 <script>
+$(document).ready(function(){
+    $('#deptSelect').change(function(){
+        submitDepartment(this.value);
+    });
+});
+
 function submitDepartment(department) {
     $.post('/department', {department: department}, function(data){
-
+        $('#deptAverage').text('Average salary in department: ' + data).show();
     });
 }
 </script>
