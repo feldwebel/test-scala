@@ -39,7 +39,6 @@ $(document).ready(function(){
 
 function submitDepartment(department) {
     $.post('/department', {department: department}, function(data){
-        console.log(data)
         $('#deptAverage').text('Average salary in department: ' + data[0] + ' Total salary: ' + data[1]).show();
     });
 }
