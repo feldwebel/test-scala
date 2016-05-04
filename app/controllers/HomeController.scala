@@ -29,7 +29,7 @@ class HomeController @Inject() extends Controller {
   )
 
   def index = Action {
-    Ok(views.html.index(PeopleModel.show, PeopleModel.total))
+    Ok(views.html.index(PeopleModel.show, PeopleModel.total, PeopleModel.average))
   }
 
   def add = Action { implicit request =>

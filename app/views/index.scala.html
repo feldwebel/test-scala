@@ -1,4 +1,4 @@
-@(Records : List[PeopleModel], Total : Int)
+@(Records : List[PeopleModel], Total : Int, Average: Float)
 <script src='@routes.Assets.versioned("lib/jquery/jquery.min.js")'></script>
 <div>
     <div>
@@ -28,7 +28,7 @@
     @for(item <- Records) {
         <tr><td>@item.name</td><td>@item.salary</td><td>@item.department</td></tr>
     }
-    <tr><td>Total:</td><td>@Total</td><td>&nbsp;</td></tr>
+    <tr><td>Total: @Total</td><td></td><td>Average: @Average</td></tr>
 </table>
 <script>
 $(document).ready(function(){

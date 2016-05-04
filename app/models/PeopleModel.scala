@@ -31,7 +31,7 @@ object PeopleModel {
 
   def total(): Int = records.map(_.salary).sum
 
-//  def average() {}
+  def average() : Float = records.map(_.salary).sum / records.length
 
   def average(department: DepartmentModel) : Float = {
     val items = records.filter(r => r.department == department.department).map(_.salary)
@@ -40,11 +40,6 @@ object PeopleModel {
 
   //  def totalSum(department: String): Int =
   //    records.filter(r => r.department == department).map(_.salary).sum
-  //
-  //  def averageSum(department: String): Float = {
-  //    val items = records.filter(r => r.department == department).map(_.salary)
-  //    items.sum / items.length
-  //  }
   //
   //  def findUser(name: String): String =
   //    records.find(r => r.name == name).toString
